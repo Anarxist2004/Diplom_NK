@@ -25,6 +25,9 @@ from services.Changers.ControlConditions.ch_ControlConditions import ControlCond
 
 from services.Changers.PreparationControl.ch_PreparationControl import PreparationControl
 from services.Changers.ControlProcedure.ch_ControlProcedure import ControlProcedure
+
+#заглушка 
+from services.Changers.RegulatoryMethodologicalDocumentation.sh_Stub import Stub
 def createPipeLine()->PipeLine:
     pipeLine =PipeLine()
     pipeLine.addChanger(SetSortament(),0)#2
@@ -43,13 +46,15 @@ def createPipeLine()->PipeLine:
     pipeLine.addChanger(PreparationControl(),0)
 
     # pipeLine.addChanger(ControlProcedure(),0)#6 доделать
+
+    pipeLine.addChanger(Stub(),0)#Заглушка
     
     return pipeLine
 
 test =False
 
 def main():
-    repo = PostgresDataBase("host=localhost port=5432 dbname=techcard user=postgres password=admin")
+    repo = PostgresDataBase("host=localhost port=5435 dbname=techCard user=postgres password=1")
     controller=ControllerWeb()
     service = TechCardService(repo,createPipeLine())
     controller.setServise(service)
@@ -60,7 +65,7 @@ def main():
 
 
 def testF():
-    repo = PostgresDataBase("host=localhost port=5435 dbname=techCard user=postgres password=1")
+    repo = PostgresDataBase("host=localhost port=5432 dbname=techcard user=postgres password=admin")
 #     controller=ControllerWeb()
 #     controller.setServise(service)
 #     #create_adapter(controller)

@@ -3,10 +3,18 @@ from pydantic import BaseModel
 from interfaces.i_controllers import IControllers
 import uvicorn
 from fastapi import Body
+from fastapi.middleware.cors import CORSMiddleware
+
 urlObjec="object"
 
 app = FastAPI()
-
+app.add_middleware(
+    CORSMiddleware,
+    allow_origins=["*"],  # для теста
+    allow_credentials=True,
+    allow_methods=["*"],
+    allow_headers=["*"],
+)
 
 
 
