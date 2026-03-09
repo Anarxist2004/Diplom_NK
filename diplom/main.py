@@ -4,6 +4,8 @@ import io
 sys.stdout = io.TextIOWrapper(sys.stdout.buffer, encoding='utf-8')
 
 from repositories.postgresDataBase import PostgresDataBase
+from repositories.PostgreDbShablov import PostgreDbShablov
+
 from services.tech_card_service import TechCardService
 from services.tech_card_service import TechCardData
 from services.PipeLine import PipeLine
@@ -54,7 +56,8 @@ def createPipeLine()->PipeLine:
 test =False
 
 def main():
-    repo = PostgresDataBase("host=localhost port=5435 dbname=techCard user=postgres password=1")
+   # repo = PostgresDataBase("host=localhost port=5435 dbname=techCard user=postgres password=1")
+    repo = PostgreDbShablov("host=localhost port=5435 dbname=welding_control_db user=postgres password=1")
     controller=ControllerWeb()
     service = TechCardService(repo,createPipeLine())
     controller.setServise(service)
