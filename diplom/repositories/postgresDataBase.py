@@ -319,6 +319,7 @@ class PostgresDataBase(IRepository[TechCardData]):
             id_name_dict = {row["id"]: row["name"] for row in rows}
             tech_card = TechCardData()
             tech_card.type = id_name_dict
+            print(id_name_dict)
             return tech_card
         except Exception as e:
             print(f"Error in get_all_controlled_element_types: {e}")

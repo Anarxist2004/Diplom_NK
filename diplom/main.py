@@ -53,18 +53,26 @@ def createPipeLine()->PipeLine:
     
     return pipeLine
 
+def createPipeLineShablov()->PipeLine:
+    pipeLine =PipeLine()
+    return pipeLine
 test =False
 
-def main():
-   # repo = PostgresDataBase("host=localhost port=5435 dbname=techCard user=postgres password=1")
-    repo = PostgreDbShablov("host=localhost port=5435 dbname=welding_control_db user=postgres password=1")
-    controller=ControllerWeb()
-    service = TechCardService(repo,createPipeLine())
-    controller.setServise(service)
-    create_adapter(controller)
+# def main():
+#     repo = PostgresDataBase("host=localhost port=5435 dbname=techCard user=postgres password=1")
+#     controller=ControllerWeb()
+#     service = TechCardService(repo,createPipeLine())
+#     controller.setServise(service)
+#     create_adapter(controller)
 
     
-    
+def main():
+    #repo = PostgresDataBase("host=localhost port=5435 dbname=techCard user=postgres password=1")
+    repo = PostgreDbShablov("host=localhost port=5435 dbname=welding_control_db user=postgres password=1")
+    controller=ControllerWeb()
+    service = TechCardService(repo,createPipeLineShablov())
+    controller.setServise(service)
+    create_adapter(controller)    
 
 
 def testF():
